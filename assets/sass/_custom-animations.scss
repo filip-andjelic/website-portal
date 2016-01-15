@@ -1,0 +1,155 @@
+$positiveOffset : 10px;
+$negativeOffset : -10px;
+/* floatingLT animation */
+  @keyframes floatingLT {
+    0%   {
+    	-webkit-transform: translate(0px,0px);
+    	transform: translate(0px,0px);
+    }
+    50%  {
+    	-webkit-transform: translate($positiveOffset,$positiveOffset);
+    	transform: translate($positiveOffset,$positiveOffset);
+    }
+    100% {
+    	-webkit-transform: translate(0px,0px);
+    	transform: translate(0px,0px);
+    }
+  }
+  @-webkit-keyframes floatingLT {
+  	0%   {
+  		-webkit-transform: translate(0px,0px);
+    	transform: translate(0px,0px);
+    }
+    50%  {
+    	-webkit-transform: translate($positiveOffset,$positiveOffset);
+    	transform: translate($positiveOffset,$positiveOffset);
+    }
+    100% {
+    	-webkit-transform: translate(0px,0px);
+    	transform: translate(0px,0px);
+    }
+  }
+/* floatingRT animation */
+  @keyframes floatingRT {
+    0%   {
+    	-webkit-transform: translate(0px,0px);
+    	transform: translate(0px,0px);
+    }
+    50%  {
+    	-webkit-transform: translate($negativeOffset,$positiveOffset);
+    	transform: translate($negativeOffset,$positiveOffset);
+    }
+    100% {
+    	-webkit-transform: translate(0px,0px);
+    	transform: translate(0px,0px);
+    }
+  }
+  @-webkit-keyframes floatingRT {
+  	0%   {
+  		-webkit-transform: translate(0px,0px);
+    	transform: translate(0px,0px);
+    }
+    50%  {
+    	-webkit-transform: translate($negativeOffset,$positiveOffset);
+    	transform: translate($negativeOffset,$positiveOffset);
+    }
+    100% {
+    	-webkit-transform: translate(0px,0px);
+    	transform: translate(0px,0px);
+    }
+  }
+/* floatingRB animation */
+  @keyframes floatingRB {
+    0%   {
+    	-webkit-transform: translate(0px,0px);
+    	transform: translate(0px,0px);
+    }
+    50%  {
+    	-webkit-transform: translate($negativeOffset,$negativeOffset);
+    	transform: translate($negativeOffset,$negativeOffset);
+    }
+    100% {
+    	-webkit-transform: translate(0px,0px);
+    	transform: translate(0px,0px);
+    }
+  }
+  @-webkit-keyframes floatingRB {
+  	0%   {
+  		-webkit-transform: translate(0px,0px);
+    	transform: translate(0px,0px);
+    }
+    50%  {
+    	-webkit-transform: translate($negativeOffset,$negativeOffset);
+    	transform: translate($negativeOffset,$negativeOffset);
+    }
+    100% {
+    	-webkit-transform: translate(0px,0px);
+    	transform: translate(0px,0px);
+    }
+  }
+/* floatingLB animation */
+  @keyframes floatingLB {
+    0%   {
+    	-webkit-transform: translate(0px,0px);
+    	transform: translate(0px,0px);
+    }
+    50%  {
+    	-webkit-transform: translate($positiveOffset,$negativeOffset);
+    	transform: translate($positiveOffset,$negativeOffset);
+    }
+    100% {
+    	-webkit-transform: translate(0px,0px);
+    	transform: translate(0px,0px);
+    }
+  }
+  @-webkit-keyframes floatingLB {
+  	0%   {
+  		-webkit-transform: translate(0px,0px);
+    	transform: translate(0px,0px);
+    }
+    50%  {
+    	-webkit-transform: translate($positiveOffset,$negativeOffset);
+    	transform: translate($positiveOffset,$negativeOffset);
+    }
+    100% {
+    	-webkit-transform: translate(0px,0px);
+    	transform: translate(0px,0px);
+    }
+  }
+/* animated background */
+  @keyframes animatedBackground {
+  	0%   {
+  		-webkit-transform: translate(0px,0px);
+    	transform: translate(0px,0px);
+    }
+    30%  {
+    	-webkit-transform: translate(50px,10px);
+    	transform: translate(50px,10px);
+    }
+    70%  {
+    	-webkit-transform: translate($negativeOffset,-5px);
+    	transform: translate($negativeOffset,-5px);
+    }
+    100% {
+    	-webkit-transform: translate(0px,0px);
+    	transform: translate(0px,0px);
+    }
+  }
+  @-webkit-keyframes animatedBackground {
+  	0%   {
+  		-webkit-transform: translate(0px,0px);
+    	transform: translate(0px,0px);
+    }
+    30%  {
+    	-webkit-transform: translate(50px,10px);
+    	transform: translate(50px,10px);
+    }
+    70%  {
+    	-webkit-transform: translate($negativeOffset,-5px);
+    	transform: translate($negativeOffset,-5px);
+    }
+    100% {
+    	-webkit-transform: translate(0px,0px);
+    	transform: translate(0px,0px);
+    }
+  }

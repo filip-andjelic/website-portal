@@ -1,0 +1,33 @@
+{
+  "name": "website",
+  "title": "Website",
+  "version": "1.0.0",
+  "description": "Website",
+  "url": "",
+  "copyright": "",
+  "dependencies": {
+    "grunt": "^0.4.5",
+    "grunt-concurrent": "^1.0.0",
+    "grunt-contrib-concat": "^0.5.1",
+    "grunt-contrib-htmlmin": "^0.4.0",
+    "grunt-contrib-jshint": "^0.11.2",
+    "grunt-contrib-uglify": "^0.9.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-text-replace": "^0.4.0"
+  },
+  "devDependencies": {
+    "grunt-angular-templates": "^0.5.7",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-npm-install": "^0.2.0",
+    "grunt-sass": "^1.0.0",
+    "load-grunt-tasks": "^3.2.0"
+  },
+  "scripts": {
+    "test": ""
+  },
+  "keywords": [
+    "grunt"
+  ],
+  "author": "Nilex AB",
+  "license": "ICS"
+}
