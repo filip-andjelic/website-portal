@@ -42,45 +42,68 @@ angular.module( "appModule" )
 }]);
 // Directive pages
 angular.module( "appModule" )
-.directive( "topicHolder", function(){
+.directive( "topicHolder", function( $http ){
 	return {
 		restrict: "A",
 		templateUrl: "views/home.html",
 		link: function (scope, element, attrs) {
 
 			var childScope = $(element).children().scope();
+			scope.json = {};
+			scope.loadOrganize = function (name) {
+				setTimeout(function(){
+					$http({
+						method: 'GET',
+						url:    '/website-development/demo-data/'+name+'.json'
+					}).then(function(response){
+						console.log(response);
+						scope.json 							= response.data.organize;
+						childScope.content.json = response.data.organize;
+					});
+				},0);
+			};
 			scope.topic = attrs.topic;
 
 			switch(scope.topic) {
 				case 'downtownData': 
-					childScope.content = {
+					scope.loadOrganize('default-organize');
+					scope.content = {
 						header: 'DOWNTOWN',
 						page:   1
-					}
+					};
+					childScope.content = scope.content;
 					break;
 				case 'artCultureData': 
-					childScope.content = {
+					scope.loadOrganize('default-organize');
+					scope.content = {
 						header: 'ART',
 						page:   2
-					}
+					};
+					childScope.content = scope.content;
 					break;
 				case 'peopleData': 
-					childScope.content = {
+					scope.loadOrganize('default-organize');
+					scope.content = {
 						header: 'PEOPLE',
 						page:   3
-					}
+					};
+					childScope.content = scope.content;
 					break;
 				case 'roadData': 
-					childScope.content = {
+					scope.loadOrganize('default-organize');
+					scope.content = {
 						header: 'ROAD',
 						page:   4
-					}
+					};
+					childScope.content = scope.content;
 					break;
 				case 'homeData': 
-					childScope.content = {
+					scope.loadOrganize('box-organize');
+					scope.content = {
 						header: 'HOME',
 						page:   0
-					}
+					};
+					childScope.content = scope.content;
 					break;
 			}
 		}
@@ -88,7 +111,7 @@ angular.module( "appModule" )
 });
 // Controller for page directives
 angular.module( "appModule" )
-.controller( 'topicController', ["$scope", function( $scope ) {
+.controller( 'topicController', ["$scope", "$http", function( $scope, $http ) {
 
 	$scope.page = $('#arch-wrapper').scope().page;
 	$scope.$on('pageSwitch', function(event, param){

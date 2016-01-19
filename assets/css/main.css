@@ -1,23 +1,3 @@
-html {
-  height: 100%; }
-
-body {
-  height: 100%; }
-
-#background-picture {
-  position: fixed;
-  background: #ffffff url("../img/background1.jpg") no-repeat 0 0;
-  background-size: cover;
-  width: 100%;
-  min-width: 1260px;
-  height: 100%;
-  min-height: 980px;
-  margin: 0;
-  animation-name: animatedBackground;
-  animation-duration: 30s;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear; }
-
 /* floatingLT animation */
 @keyframes floatingLT {
   0% {
@@ -129,6 +109,27 @@ body {
   100% {
     -webkit-transform: translate(0px, 0px);
     transform: translate(0px, 0px); } }
+/* style for main layout of page */
+html {
+  height: 100%; }
+
+body {
+  height: 100%; }
+
+#background-picture {
+  position: fixed;
+  background: #ffffff url("../img/background1.jpg") no-repeat 0 0;
+  background-size: cover;
+  width: 100%;
+  min-width: 1260px;
+  height: 100%;
+  min-height: 980px;
+  margin: 0;
+  animation-name: animatedBackground;
+  animation-duration: 30s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear; }
+
 #arch-wrapper {
   position: absolute;
   background-color: #000000;
@@ -148,7 +149,7 @@ body {
       left: 10%;
       width: 80%;
       height: 80%;
-      background-color: yellow;
+      background-color: #055088;
       opacity: 0.9;
       z-index: 10; }
       #arch-wrapper .main-wrapper .front-tab .topic-container {
@@ -170,12 +171,19 @@ body {
               padding-top: 15px; }
               #arch-wrapper .main-wrapper .front-tab .tab-navigation .navigation .top-nav .nav span {
                 height: 100%;
-                background-color: purple;
+                background-color: #bc1111;
                 padding: 10px 25px;
                 border-radius: 45% 45% 0 0; }
+                #arch-wrapper .main-wrapper .front-tab .tab-navigation .navigation .top-nav .nav span:hover {
+                  background-color: #d80000;
+                  background: -moz-linear-gradient(bottom, #bc1111 0%, #d80000 75%);
+                  background: -webkit-linear-gradient(bottom, #bc1111 0%, #d80000 75%);
+                  background: linear-gradient(to top, #bc1111 0%, #d80000 75%); }
+                  #arch-wrapper .main-wrapper .front-tab .tab-navigation .navigation .top-nav .nav span:hover a {
+                    color: #ffee00; }
                 #arch-wrapper .main-wrapper .front-tab .tab-navigation .navigation .top-nav .nav span a {
                   text-decoration: none;
-                  color: white;
+                  color: #eabb00;
                   font-size: 18px;
                   font-weight: 600; }
               #arch-wrapper .main-wrapper .front-tab .tab-navigation .navigation .top-nav .nav span:first-child {
@@ -194,16 +202,23 @@ body {
               height: 100%;
               width: 86%;
               margin: auto;
-              border-top: 2px solid purple;
+              border-top: 2px solid #bc1111;
               padding-bottom: 15px; }
               #arch-wrapper .main-wrapper .front-tab .tab-navigation .navigation .bot-nav .nav span {
                 height: 100%;
-                background-color: purple;
+                background-color: #bc1111;
                 padding: 5px 25px;
                 border-radius: 0 0 45% 45%; }
+                #arch-wrapper .main-wrapper .front-tab .tab-navigation .navigation .bot-nav .nav span:hover {
+                  background-color: #d80000;
+                  background: -moz-linear-gradient(top, #bc1111 0%, #d80000 75%);
+                  background: -webkit-linear-gradient(top, #bc1111 0%, #d80000 75%);
+                  background: linear-gradient(to bottom, #bc1111 0%, #d80000 75%); }
+                  #arch-wrapper .main-wrapper .front-tab .tab-navigation .navigation .bot-nav .nav span:hover a {
+                    color: #ffee00; }
                 #arch-wrapper .main-wrapper .front-tab .tab-navigation .navigation .bot-nav .nav span a {
                   text-decoration: none;
-                  color: white;
+                  color: #eabb00;
                   font-size: 18px;
                   font-weight: 600; }
               #arch-wrapper .main-wrapper .front-tab .tab-navigation .navigation .bot-nav .nav span:last-child {
@@ -223,28 +238,30 @@ body {
             width: 80px;
             height: 80px;
             border-radius: 50%;
-            background-color: brown; }
+            background-color: #bc1111; }
+      #arch-wrapper .main-wrapper .front-tab .tab-content .box {
+        max-width: 18%; }
       #arch-wrapper .main-wrapper .front-tab .tab-footer {
-        position: absolute;
-        bottom: 0;
+        position: relative;
         margin: 0;
         height: 20%;
         width: 100%;
-        background-color: red; }
+        background-color: #055088; }
         #arch-wrapper .main-wrapper .front-tab .tab-footer .placeholder {
           height: 100%;
-          border: 2px inset black;
-          z-index: 1; }
+          border: 2px inset transparent;
+          z-index: 1;
+          background-color: brown; }
         #arch-wrapper .main-wrapper .front-tab .tab-footer .center-round {
           width: 25%;
           height: 65%;
           position: absolute;
           left: 37.5%;
           bottom: 0;
-          border: 2px inset black;
+          border: 2px inset transparent;
           border-radius: 160px 160px 0 0;
           border-bottom: none;
-          background-color: red;
+          background-color: #055088;
           z-index: 2; }
           #arch-wrapper .main-wrapper .front-tab .tab-footer .center-round .center-rect {
             position: absolute;
@@ -252,29 +269,45 @@ body {
             left: 16.3%;
             height: 130%;
             width: 67.4%;
-            background-color: red; }
+            background-color: #055088; }
     #arch-wrapper .main-wrapper .back-tab {
       position: absolute;
       width: 40%;
       height: 40%;
-      background-color: green;
+      background-color: #906610;
       opacity: 0.5;
       z-index: 9; }
       #arch-wrapper .main-wrapper .back-tab:hover {
         cursor: pointer;
         cursor: hand; }
+      #arch-wrapper .main-wrapper .back-tab .topic-container {
+        position: absolute;
+        height: 100%;
+        width: 100%; }
       #arch-wrapper .main-wrapper .back-tab .tab-navigation {
         width: 100%;
         min-height: 46px;
-        background-color: blue;
+        background-color: #bc1111;
         position: absolute; }
+        #arch-wrapper .main-wrapper .back-tab .tab-navigation:hover {
+          opacity: 1; }
         #arch-wrapper .main-wrapper .back-tab .tab-navigation h3 {
           text-align: center;
           font-weight: 600;
-          color: red;
+          color: #eabb00;
           margin: 0;
           padding-top: 10px;
           padding-bottom: 10px; }
+      #arch-wrapper .main-wrapper .back-tab .tab-content {
+        position: absolute;
+        height: 100%; }
+        #arch-wrapper .main-wrapper .back-tab .tab-content .box {
+          max-width: 18%;
+          -ms-transform: scale(0.5, 0.5);
+          -webkit-transform: scale(0.5, 0.5);
+          transform: scale(0.5, 0.5); }
+        #arch-wrapper .main-wrapper .back-tab .tab-content > div {
+          height: 100%; }
     #arch-wrapper .main-wrapper .top-left-tab {
       top: 0;
       left: 0;
@@ -282,6 +315,9 @@ body {
       animation-duration: 6s;
       animation-iteration-count: infinite;
       animation-timing-function: ease-in-out; }
+      #arch-wrapper .main-wrapper .top-left-tab .tab-content {
+        bottom: 0;
+        padding-top: 50px; }
     #arch-wrapper .main-wrapper .top-right-tab {
       top: 0;
       left: 60%;
@@ -289,6 +325,9 @@ body {
       animation-duration: 6s;
       animation-iteration-count: infinite;
       animation-timing-function: ease-in-out; }
+      #arch-wrapper .main-wrapper .top-right-tab .tab-content {
+        bottom: 0;
+        padding-top: 50px; }
     #arch-wrapper .main-wrapper .bot-right-tab {
       top: 60%;
       left: 60%;
@@ -298,6 +337,9 @@ body {
       animation-timing-function: ease-in-out; }
       #arch-wrapper .main-wrapper .bot-right-tab .tab-navigation {
         bottom: 0; }
+      #arch-wrapper .main-wrapper .bot-right-tab .tab-content {
+        top: 0;
+        padding-bottom: 50px; }
     #arch-wrapper .main-wrapper .bot-left-tab {
       top: 60%;
       left: 0;
@@ -307,5 +349,36 @@ body {
       animation-timing-function: ease-in-out; }
       #arch-wrapper .main-wrapper .bot-left-tab .tab-navigation {
         bottom: 0; }
+      #arch-wrapper .main-wrapper .bot-left-tab .tab-content {
+        top: 0;
+        padding-bottom: 50px; }
+
+/* style for content inside topic */
+.topic-container .tab-content {
+  width: 100%;
+  height: 85%;
+  color: #bc1111; }
+  .topic-container .tab-content .box-pane {
+    width: 100%;
+    height: 80%;
+    background-color: #055088; }
+  .topic-container .tab-content .left-pane {
+    float: left;
+    width: 20%;
+    height: 85%;
+    border: 1px inset grey; }
+  .topic-container .tab-content .mid-pane {
+    float: left;
+    width: 60%;
+    height: 85%;
+    border: 1px inset grey; }
+  .topic-container .tab-content .right-pane {
+    float: left;
+    width: 20%;
+    height: 85%;
+    border: 1px inset grey; }
+  .topic-container .tab-content .bot-pane {
+    width: 100%;
+    height: 15%; }
 
 /*# sourceMappingURL=main.css.map */

@@ -1,0 +1,10 @@
+{
+	"organize": {
+		"leftPane": true,
+		"rightPane": true,
+		"midPane": true,
+		"botPane": true,
+		"boxPane": false,
+		"footer": false
+	}
+}

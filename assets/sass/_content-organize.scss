@@ -1,0 +1,36 @@
+.topic-container {
+
+	.tab-content {
+			width: 100%;
+			height: 85%;
+			color: $contentColor;
+
+		.box-pane {
+			width: 100%;
+			height: 80%;
+			background-color: $contentBackground;
+		}
+		.left-pane {
+			float: left;
+			width: 20%;
+			height: 85%;
+			border: 1px inset grey;
+		}
+		.mid-pane {
+			float: left;
+			width: 60%;
+			height: 85%;
+			border: 1px inset grey;
+		}
+		.right-pane {
+			float: left;
+			width: 20%;
+			height: 85%;
+			border: 1px inset grey;
+		}
+		.bot-pane {
+			width: 100%;
+			height: 15%;
+		}
+	}
+}

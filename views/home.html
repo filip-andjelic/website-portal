@@ -19,16 +19,29 @@
 			</div>
 		</div>
 		<h3 ng-show="content.page !== page"> {{content.header}} </h3>
-	</div>	
+	</div><!-- end of nav part -->	
 	<div class="tab-content">
+		<div ng-if="content.json.boxPane" class="box-pane">
+			<div class="box">
+				<h1>radnom text</h1>
+			</div>
+			<div class="box">
+				<h1>One more time</h1>
+			</div>
+		</div>
+		<div ng-if="content.json.leftPane" class="left-pane"></div>
+		<div ng-if="content.json.midPane" class="mid-pane"></div>
+		<div ng-if="content.json.rightPane" class="right-pane"></div>
+		<div ng-if="content.json.botPane" class="bot-pane"></div>
+		<div ng-if="content.json.footer" class="tab-footer row">
+		  <div class="col-lg-5 placeholder">{{content.json.footer}}</div>
+		  <div class="col-lg-2">a</div>
+		  <div class="col-lg-5 placeholder">{{content.json.leftPane}}</div>
+		  <div class="center-round">
+		  	<div class="center-rect">
+		  	</div>
+		  </div>
+		</div>
 	</div>
-	<div class="tab-footer row">
-	  <div class="col-lg-5 placeholder">flop</div>
-	  <div class="col-lg-2">a</div>
-	  <div class="col-lg-5 placeholder">flop</div>
-	  <div class="center-round">
-	  	<div class="center-rect">
-	  	</div>
-	  </div>
-	</div>
+	
 </div>
