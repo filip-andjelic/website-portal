@@ -14,23 +14,122 @@
 			float: left;
 			width: 20%;
 			height: 85%;
-			border: 1px inset grey;
+			//border: 1px inset grey;
+
+			.left-box{
+				height: 30%;
+				width: 90%;	
+				margin-left: 10%;
+
+				.box-content  {
+					height: 100%;
+					width: 100%;
+					background-size: cover;
+					border-radius: 5%	5% 5% 5%;
+				}
+			}
+			span:first-of-type, span:nth-of-type(2) {
+
+				.left-box {
+					margin-bottom: 7%;
+				}
+			}
+			span:first-of-type {
+				.box-content {
+					border-radius: 15% 0 5% 5%;
+				}
+			}
+			span:last-of-type {
+				.box-content {
+					border-radius: 5% 5% 0 15%;
+				}
+			}
 		}
 		.mid-pane {
 			float: left;
 			width: 60%;
 			height: 85%;
-			border: 1px inset grey;
+			//border: 1px inset grey;
+			 -webkit-box-shadow: inset 0 20px 20px -20px #222;
+   		 -moz-box-shadow: inset 0 20px 20px -20px #222;
+    	 box-shadow: inset 0 20px 20px -20px #222;
+
 		}
 		.right-pane {
 			float: left;
 			width: 20%;
 			height: 85%;
-			border: 1px inset grey;
+			//border: 1px inset grey;
+
+			.right-box{
+				height: 30%;
+				width: 90%;	
+				margin-right: 10%;
+
+				.box-content  {
+					height: 100%;
+					width: 100%;
+					background-size: cover;
+					border-radius: 5%	5% 5% 5%;
+				}
+			}
+			span:first-of-type, span:nth-of-type(2) {
+
+				.right-box {
+					margin-bottom: 7%;
+				}
+			}
+			span:first-of-type {
+				.box-content {
+					border-radius: 0 15% 5% 5%;
+				}
+			}
+			span:last-of-type {
+				.box-content {
+					border-radius: 5% 5% 15% 0;
+				}
+			}
 		}
 		.bot-pane {
 			width: 100%;
 			height: 15%;
+			clear: both;
+			text-align: center;
+			
+			.link-wrapper {
+				overflow: hidden;
+				height: 100%;
+
+				.bottom-link {
+					height: 100%;
+					width: 15%;
+					padding: 0 5px 10px 5px;
+					display: inline-block;
+
+					.link-content {
+						height: 100%;
+						width: 100%;
+						border-radius: 15% 15% 15% 15%;
+						
+						&:hover {
+							cursor: pointer;
+							cursor: hand;
+							-webkit-animation-name: pulse;
+  						animation-name: pulse;
+    					animation-duration: 1s;
+    					animation-iteration-count: 1;
+						}
+					}
+				}
+			}	
+		}
+		.left-pane, .right-pane {
+			.box-content {
+				&:hover {
+					cursor: pointer;
+					cursor: hand;
+				}
+			}
 		}
 	}
 }

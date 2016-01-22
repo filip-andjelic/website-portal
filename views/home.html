@@ -29,10 +29,27 @@
 				<h1>One more time</h1>
 			</div>
 		</div>
-		<div ng-if="content.json.leftPane" class="left-pane"></div>
+		<div ng-if="content.json.leftPane" class="left-pane">
+			<span left-box data-box="{{leftLinks.first}}"></span>
+			<span left-box data-box="{{leftLinks.second}}"></span>
+			<span left-box data-box="{{leftLinks.third}}"></span>
+		</div>
 		<div ng-if="content.json.midPane" class="mid-pane"></div>
-		<div ng-if="content.json.rightPane" class="right-pane"></div>
-		<div ng-if="content.json.botPane" class="bot-pane"></div>
+		<div ng-if="content.json.rightPane" class="right-pane">
+			<span right-box data-box="{{rightLinks.first}}"></span>
+			<span right-box data-box="{{rightLinks.second}}"></span>
+			<span right-box data-box="{{rightLinks.third}}"></span>
+		</div>
+		<div ng-if="content.json.botPane" class="bot-pane">
+			<div class="link-wrapper">
+			<span bottom-link data-link="{{botLinks.first}}"></span>
+			<span bottom-link data-link="{{botLinks.second}}"></span>
+			<span bottom-link data-link="{{botLinks.third}}"></span>
+			<span bottom-link data-link="{{botLinks.fourth}}"></span>
+			<span bottom-link data-link="{{botLinks.fifth}}"></span>
+			<span bottom-link data-link="{{botLinks.sixth}}"></span>
+			</div>
+		</div>
 		<div ng-if="content.json.footer" class="tab-footer row">
 		  <div class="col-lg-5 placeholder">{{content.json.footer}}</div>
 		  <div class="col-lg-2">a</div>

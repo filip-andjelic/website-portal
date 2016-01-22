@@ -15,7 +15,6 @@ angular.module( "appModule" )
 	    	var homePage = $('#home');
 	    	homePage.removeClass();
 	    	$scope.page = number;
-	    	console.log('Odje klikamo na prozor!');
 	    	switch(number) {
 	    		case 1:
 	    			homePage.addClass('back-tab top-left-tab');
@@ -40,7 +39,7 @@ angular.module( "appModule" )
 			$scope.$broadcast('pageSwitch', $scope.page);
 		});
 }]);
-// Directive pages
+// Directive pages for topics
 angular.module( "appModule" )
 .directive( "topicHolder", function( $http ){
 	return {
@@ -56,7 +55,6 @@ angular.module( "appModule" )
 						method: 'GET',
 						url:    '/website-development/demo-data/'+name+'.json'
 					}).then(function(response){
-						console.log(response);
 						scope.json 							= response.data.organize;
 						childScope.content.json = response.data.organize;
 					});
@@ -147,6 +145,7 @@ angular.module( "appModule" )
 			title: $scope.page === 4 ? 'Home' : 'Hit The Road'
 		}
 	];
+	// triggers when top navigation link is clicked
 	$scope.clickLink = function(event, link) {
 		var homePage = $('#home');
   	homePage.removeClass();
@@ -171,5 +170,147 @@ angular.module( "appModule" )
   			break;			
   	}
 	};
-	//console.log($scope.content);
+	// defines object for bottom content
+	$scope.botLinks = {};
+	$scope.leftLinks = {};
+	$scope.rightLinks = {};
+	$scope.loadBotLinks = function () {
+		$scope.botLinks = {
+			first: {
+				link: 'Wolves-wallpaper-10339931.jpg',
+				id: 1
+			},
+			second: {
+				link: 'Ponitac_GTO-wallpaper-10304245.jpg',
+				id: 2
+			},
+			third: {
+				link: 'Space-wallpaper-9893814.jpg',
+				id: 3
+			},
+			fourth: {
+				link: 'Old_Clock-wallpaper-8817777.jpg',
+				id: 4
+			},
+			fifth: {
+				link: 'Time-wallpaper-8702133.jpg',
+				id: 5
+			},
+			sixth: {
+				link: 'Sunrise-wallpaper-8989304.jpg',
+				id: 6
+			}
+		};
+	};
+	$scope.loadLeftLinks = function () {
+		$scope.leftLinks = {
+			first: {
+				link: 'Wheels-wallpaper-9807122.jpg',
+				id: 7
+			},
+			second: {
+				link: 'perfectly-timed-photos-part2-16.jpg',
+				id: 8
+			},
+			third: {
+				link: 'Space-wallpaper-9893814.jpg',
+				id: 9
+			}
+		};
+	};
+	$scope.loadRightLinks = function () {
+		$scope.rightLinks = {
+			first: {
+				link: 'Wolves-wallpaper-10339931.jpg',
+				id: 10
+			},
+			second: {
+				link: 'Sailboat-wallpaper-10090828.jpg',
+				id: 11
+			},
+			third: {
+				link: 'Mustang-wallpaper-4652060.jpg',
+				id: 12
+			}
+		};
+	};
+	$scope.loadBotLinks();
+	$scope.loadLeftLinks();
+	$scope.loadRightLinks();
+	//console.log($scope.botLinks);
 }]);
+// directive for link holder in bottom content panel 
+angular.module( "appModule" )
+.directive( 'bottomLink', function( $http, $timeout ) {
+  return {
+  	restrict: 'A',
+  	scope: {
+  		link: '@'
+  	},
+  	template: '<div class="bottom-link"><div class="link-content" ng-style="{\'background-image\': \'url(/website-development/assets/img/\'+url+\')\'}"></div></div>',
+  	link: function( scope, element, attrs ) {
+
+  		scope.link = scope.$eval(attrs.link);
+  		scope.url  = scope.link.link;
+  		//console.log(scope.url);
+  		/* loading dinymical data
+  		$http({
+  			method: 'GET',
+  			url:    '/website-development/assets/img/'+scope.link
+  		}).then(function(response){
+  			scope.bottomContent = response;
+  		});
+			*/
+  	}
+  }		
+});
+// directive for link holder in left content panel 
+angular.module( "appModule" )
+.directive( 'leftBox', function( $http, $timeout ) {
+  return {
+  	restrict: 'A',
+  	scope: {
+  		link: '@'
+  	},
+  	template: '<div class="left-box"><div class="box-content" ng-style="{\'background-image\': \'url(/website-development/assets/img/\'+url+\')\'}"></div></div>',
+  	link: function( scope, element, attrs ) {
+
+  		scope.box = scope.$eval(attrs.box);
+  		scope.url  = scope.box.link;
+  		//console.log(scope.url);
+  		/* loading dinymical data
+  		$http({
+  			method: 'GET',
+  			url:    '/website-development/assets/img/'+scope.link
+  		}).then(function(response){
+  			scope.bottomContent = response;
+  		});
+			*/
+  	}
+  }		
+});
+// directive for link holder in right content panel 
+angular.module( "appModule" )
+.directive( 'rightBox', function( $http, $timeout ) {
+  return {
+  	restrict: 'A',
+  	scope: {
+  		link: '@'
+  	},
+  	template: '<div class="right-box"><div class="box-content" ng-style="{\'background-image\': \'url(/website-development/assets/img/\'+url+\')\'}"></div></div>',
+  	link: function( scope, element, attrs ) {
+
+  		scope.box = scope.$eval(attrs.box);
+  		scope.url  = scope.box.link;
+  		//console.log(scope.url);
+  		/* loading dinymical data
+  		$http({
+  			method: 'GET',
+  			url:    '/website-development/assets/img/'+scope.link
+  		}).then(function(response){
+  			scope.bottomContent = response;
+  		});
+			*/
+  	}
+  }		
+});

@@ -308,6 +308,8 @@ body {
           transform: scale(0.5, 0.5); }
         #arch-wrapper .main-wrapper .back-tab .tab-content > div {
           height: 100%; }
+      #arch-wrapper .main-wrapper .back-tab .bottom-link {
+        display: none; }
     #arch-wrapper .main-wrapper .top-left-tab {
       top: 0;
       left: 0;
@@ -365,20 +367,74 @@ body {
   .topic-container .tab-content .left-pane {
     float: left;
     width: 20%;
-    height: 85%;
-    border: 1px inset grey; }
+    height: 85%; }
+    .topic-container .tab-content .left-pane .left-box {
+      height: 30%;
+      width: 90%;
+      margin-left: 10%; }
+      .topic-container .tab-content .left-pane .left-box .box-content {
+        height: 100%;
+        width: 100%;
+        background-size: cover;
+        border-radius: 5%	5% 5% 5%; }
+    .topic-container .tab-content .left-pane span:first-of-type .left-box, .topic-container .tab-content .left-pane span:nth-of-type(2) .left-box {
+      margin-bottom: 7%; }
+    .topic-container .tab-content .left-pane span:first-of-type .box-content {
+      border-radius: 15% 0 5% 5%; }
+    .topic-container .tab-content .left-pane span:last-of-type .box-content {
+      border-radius: 5% 5% 0 15%; }
   .topic-container .tab-content .mid-pane {
     float: left;
     width: 60%;
     height: 85%;
-    border: 1px inset grey; }
+    -webkit-box-shadow: inset 0 20px 20px -20px #222;
+    -moz-box-shadow: inset 0 20px 20px -20px #222;
+    box-shadow: inset 0 20px 20px -20px #222; }
   .topic-container .tab-content .right-pane {
     float: left;
     width: 20%;
-    height: 85%;
-    border: 1px inset grey; }
+    height: 85%; }
+    .topic-container .tab-content .right-pane .right-box {
+      height: 30%;
+      width: 90%;
+      margin-right: 10%; }
+      .topic-container .tab-content .right-pane .right-box .box-content {
+        height: 100%;
+        width: 100%;
+        background-size: cover;
+        border-radius: 5%	5% 5% 5%; }
+    .topic-container .tab-content .right-pane span:first-of-type .right-box, .topic-container .tab-content .right-pane span:nth-of-type(2) .right-box {
+      margin-bottom: 7%; }
+    .topic-container .tab-content .right-pane span:first-of-type .box-content {
+      border-radius: 0 15% 5% 5%; }
+    .topic-container .tab-content .right-pane span:last-of-type .box-content {
+      border-radius: 5% 5% 15% 0; }
   .topic-container .tab-content .bot-pane {
     width: 100%;
-    height: 15%; }
+    height: 15%;
+    clear: both;
+    text-align: center; }
+    .topic-container .tab-content .bot-pane .link-wrapper {
+      overflow: hidden;
+      height: 100%; }
+      .topic-container .tab-content .bot-pane .link-wrapper .bottom-link {
+        height: 100%;
+        width: 15%;
+        padding: 0 5px 10px 5px;
+        display: inline-block; }
+        .topic-container .tab-content .bot-pane .link-wrapper .bottom-link .link-content {
+          height: 100%;
+          width: 100%;
+          border-radius: 15% 15% 15% 15%; }
+          .topic-container .tab-content .bot-pane .link-wrapper .bottom-link .link-content:hover {
+            cursor: pointer;
+            cursor: hand;
+            -webkit-animation-name: pulse;
+            animation-name: pulse;
+            animation-duration: 1s;
+            animation-iteration-count: 1; }
+  .topic-container .tab-content .left-pane .box-content:hover, .topic-container .tab-content .right-pane .box-content:hover {
+    cursor: pointer;
+    cursor: hand; }
 
 /*# sourceMappingURL=main.css.map */
