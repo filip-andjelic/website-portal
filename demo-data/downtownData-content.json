@@ -1,0 +1,72 @@
+{
+	"data": {
+		"content": {
+			"botLinks": {
+				"first": {
+					"link": "Wolves-wallpaper-10339931.jpg",
+					"id": 1,
+					"text": "I just want to chill somewhere..." 
+				},
+				"second": {
+					"link": "Ponitac_GTO-wallpaper-10304245.jpg",
+					"id": 2,
+					"text": "Should I go to the teathre?"
+				},
+				"third": {
+					"link": "Space-wallpaper-9893814.jpg",
+					"id": 3,
+					"text": "Sprot events and matches."
+				},
+				"fourth": {
+					"link": "Old_Clock-wallpaper-8817777.jpg",
+					"id": 4,
+					"text": "Where to go tonight?"
+				},
+				"fifth": {
+					"link": "Time-wallpaper-8702133.jpg",
+					"id": 5,
+					"text": "We recommend to you..."
+				},
+				"sixth": {
+					"link": "Sunrise-wallpaper-8989304.jpg",
+					"id": 6,
+					"text": "I just want to play games!"
+				}
+			},
+			"leftLinks": {
+				"first": {
+					"link": "Wheels-wallpaper-9807122.jpg",
+					"id": 7,
+					"text": "Party & Clubbing" 
+				},
+				"second": {
+					"link": "perfectly-timed-photos-part2-16.jpg",
+					"id": 8,
+					"text": "Hotels & Restourants"
+				},
+				"third": {
+					"link": "Space-wallpaper-9893814.jpg",
+					"id": 9,
+					"text": "Downtown Gallery"
+				}
+			},
+			"rightLinks": {
+				"first": {
+					"link": "Wolves-wallpaper-10339931.jpg",
+					"id": 10,
+					"text": "Pubs, Bars & Caffés" 
+				},
+				"second": {
+					"link": "Sailboat-wallpaper-10090828.jpg",
+					"id": 11,
+					"text": "Events & Happenings"
+				},
+				"third": {
+					"link": "Mustang-wallpaper-4652060.jpg",
+					"id": 12,
+					"text": "Something for each one"
+				}
+			}		
+		}	
+	}
+}

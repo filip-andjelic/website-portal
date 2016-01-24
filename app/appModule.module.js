@@ -44,6 +44,9 @@ angular.module( "appModule" )
 .directive( "topicHolder", function( $http ){
 	return {
 		restrict: "A",
+		scope: {
+			topic: "@"
+		},
 		templateUrl: "views/home.html",
 		link: function (scope, element, attrs) {
 
@@ -171,73 +174,47 @@ angular.module( "appModule" )
   	}
 	};
 	// defines object for bottom content
-	$scope.botLinks = {};
-	$scope.leftLinks = {};
+	$scope.botLinks 	= {};
+	$scope.leftLinks  = {};
 	$scope.rightLinks = {};
-	$scope.loadBotLinks = function () {
-		$scope.botLinks = {
-			first: {
-				link: 'Wolves-wallpaper-10339931.jpg',
-				id: 1
-			},
-			second: {
-				link: 'Ponitac_GTO-wallpaper-10304245.jpg',
-				id: 2
-			},
-			third: {
-				link: 'Space-wallpaper-9893814.jpg',
-				id: 3
-			},
-			fourth: {
-				link: 'Old_Clock-wallpaper-8817777.jpg',
-				id: 4
-			},
-			fifth: {
-				link: 'Time-wallpaper-8702133.jpg',
-				id: 5
-			},
-			sixth: {
-				link: 'Sunrise-wallpaper-8989304.jpg',
-				id: 6
-			}
+	$scope.midLinks	  = {};
+	$scope.loadMidLinks = function () {
+		$scope.midLinks = {
+			link: 'Ponitac_GTO-wallpaper-10304245.jpg',
+			id: 13
 		};
 	};
-	$scope.loadLeftLinks = function () {
-		$scope.leftLinks = {
-			first: {
-				link: 'Wheels-wallpaper-9807122.jpg',
-				id: 7
-			},
-			second: {
-				link: 'perfectly-timed-photos-part2-16.jpg',
-				id: 8
-			},
-			third: {
-				link: 'Space-wallpaper-9893814.jpg',
-				id: 9
-			}
-		};
+	$scope.loadMidLinks();
+	$scope.loadContentLinks = function () {
+		$http({
+			method: 'GET',
+			url:    '/website-development/demo-data/'+$scope.topic+'-content.json'
+		}).then(function(response){
+			$scope.topicContent = response.data.data.content;
+		  $scope.botLinks 		= $scope.topicContent.botLinks;
+			$scope.leftLinks  	= $scope.topicContent.leftLinks;
+			$scope.rightLinks 	= $scope.topicContent.rightLinks;
+		});
 	};
-	$scope.loadRightLinks = function () {
-		$scope.rightLinks = {
-			first: {
-				link: 'Wolves-wallpaper-10339931.jpg',
-				id: 10
-			},
-			second: {
-				link: 'Sailboat-wallpaper-10090828.jpg',
-				id: 11
-			},
-			third: {
-				link: 'Mustang-wallpaper-4652060.jpg',
-				id: 12
-			}
-		};
+	$scope.loadContentLinks();
+
+	$scope.switchBoxes = function (event) {
+		var pickedBox 		 = $(event.currentTarget);
+		var thisPage	  	 = pickedBox.scope().content.page;
+		var currentPage    = pickedBox.scope().page;
+		var currentMidLink = pickedBox.closest('.tab-content').find('.mid-box').scope();
+		if ( thisPage === currentPage ) {
+			var pickedLink 		 = pickedBox.find('div').scope();
+			var midContent 		 = {
+				url: currentMidLink.url,
+				text: currentMidLink.text
+			};
+			currentMidLink.url  = pickedLink.url;
+			currentMidLink.text = pickedLink.text;
+			pickedLink.url 		  = midContent.url;
+			pickedLink.text 		= midContent.text;
+		}
 	};
-	$scope.loadBotLinks();
-	$scope.loadLeftLinks();
-	$scope.loadRightLinks();
-	//console.log($scope.botLinks);
 }]);
 // directive for link holder in bottom content panel 
 angular.module( "appModule" )
@@ -252,6 +229,7 @@ angular.module( "appModule" )
 
   		scope.link = scope.$eval(attrs.link);
   		scope.url  = scope.link.link;
+  		//console.log(scope.$parent.topic);
   		//console.log(scope.url);
   		/* loading dinymical data
   		$http({
@@ -272,12 +250,13 @@ angular.module( "appModule" )
   	scope: {
   		link: '@'
   	},
-  	template: '<div class="left-box"><div class="box-content" ng-style="{\'background-image\': \'url(/website-development/assets/img/\'+url+\')\'}"></div></div>',
+  	template: '<div class="left-box"><div class="box-content" ng-style="{\'background-image\': \'url(/website-development/assets/img/\'+url+\')\'}"><span class="box-text">{{text}}</span></div></div>',
   	link: function( scope, element, attrs ) {
 
-  		scope.box = scope.$eval(attrs.box);
+  		scope.box  = scope.$eval(attrs.box);
   		scope.url  = scope.box.link;
-  		//console.log(scope.url);
+  		scope.text = scope.box.text;
+  		//console.log(scope.text);
   		/* loading dinymical data
   		$http({
   			method: 'GET',
@@ -297,11 +276,12 @@ angular.module( "appModule" )
   	scope: {
   		link: '@'
   	},
-  	template: '<div class="right-box"><div class="box-content" ng-style="{\'background-image\': \'url(/website-development/assets/img/\'+url+\')\'}"></div></div>',
+  	template: '<div class="right-box"><div class="box-content" ng-style="{\'background-image\': \'url(/website-development/assets/img/\'+url+\')\'}"><span class="box-text">{{text}}</span></div></div>',
   	link: function( scope, element, attrs ) {
 
-  		scope.box = scope.$eval(attrs.box);
+  		scope.box  = scope.$eval(attrs.box);
   		scope.url  = scope.box.link;
+  		scope.text = scope.box.text;
   		//console.log(scope.url);
   		/* loading dinymical data
   		$http({
@@ -313,4 +293,19 @@ angular.module( "appModule" )
 			*/
   	}
   }		
+});
+// directive for content holder in mid panel
+angular.module( "appModule" )
+.directive( 'midBox', function( $http, $timeout ) {
+  return {
+  	restrict: 'A',
+  	scope: {
+  		link: '@'
+  	},
+  	template: '<div class="mid-box"><div class="box-content" ng-style="{\'background-image\': \'url(/website-development/assets/img/\'+url+\')\'}"><div class="content-header"><span class="header">{{text}}</span></div></div></div>',
+  	link: function ( scope, element, attrs) {
+  		scope.box = scope.$eval(attrs.box);
+  		scope.url  = scope.box.link;
+  	}
+  } 
 });

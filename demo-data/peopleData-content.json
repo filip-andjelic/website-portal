@@ -1,0 +1,72 @@
+{
+	"data": {
+		"content": {
+			"botLinks": {
+				"first": {
+					"link": "2014-12-19 11.34.26.jpg",
+					"id": 1,
+					"text": "Conversation..." 
+				},
+				"second": {
+					"link": ".facebook_-1676137627.jpg",
+					"id": 2,
+					"text": "Psichology"
+				},
+				"third": {
+					"link": "perfectly-timed-photos-part2-16.jpg",
+					"id": 3,
+					"text": "Our Models"
+				},
+				"fourth": {
+					"link": "Wheels-wallpaper-9807122.jpg",
+					"id": 4,
+					"text": "Our talents"
+				},
+				"fifth": {
+					"link": "Sailboat-wallpaper-10090828.jpg",
+					"id": 5,
+					"text": "Life story of..."
+				},
+				"sixth": {
+					"link": "Wolves-wallpaper-10339931.jpg",
+					"id": 6,
+					"text": "Successful people"
+				}
+			},
+			"leftLinks": {
+				"first": {
+					"link": "Mustang-wallpaper-4652060.jpg",
+					"id": 7,
+					"text": "They Told Us" 
+				},
+				"second": {
+					"link": "Sailboat-wallpaper-10090828.jpg",
+					"id": 8,
+					"text": "My People, Our People"
+				},
+				"third": {
+					"link": "perfectly-timed-photos-part2-16.jpg",
+					"id": 9,
+					"text": "I'm small but strong"
+				}
+			},
+			"rightLinks": {
+				"first": {
+					"link": "Wolves-wallpaper-10339931.jpg",
+					"id": 10,
+					"text": "Worth mentioning" 
+				},
+				"second": {
+					"link": "2014-12-19 11.32.06.jpg",
+					"id": 11,
+					"text": "They need help"
+				},
+				"third": {
+					"link": "perfectly-timed-photos-part2-16.jpg",
+					"id": 12,
+					"text": "Inspirative life"
+				}
+			}		
+		}	
+	}
+}

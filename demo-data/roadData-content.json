@@ -1,0 +1,72 @@
+{
+	"data": {
+		"content": {
+			"botLinks": {
+				"first": {
+					"link": "2014-12-19 11.34.26.jpg",
+					"id": 1,
+					"text": "North Chill" 
+				},
+				"second": {
+					"link": "Sailboat-wallpaper-10090828.jpg",
+					"id": 2,
+					"text": "South Soul"
+				},
+				"third": {
+					"link": "perfectly-timed-photos-part2-16.jpg",
+					"id": 3,
+					"text": "Travel Agencies"
+				},
+				"fourth": {
+					"link": ".facebook_427422246.jpg",
+					"id": 4,
+					"text": "Ada Bojana"
+				},
+				"fifth": {
+					"link": ".facebook_-1018583797.jpg",
+					"id": 5,
+					"text": "In Europe"
+				},
+				"sixth": {
+					"link": ".facebook_-1676137627.jpg",
+					"id": 6,
+					"text": "Cheapest Offer"
+				}
+			},
+			"leftLinks": {
+				"first": {
+					"link": ".facebook_-1336166590.jpg",
+					"id": 7,
+					"text": "Trips & Grills" 
+				},
+				"second": {
+					"link": ".facebook_-1676137627.jpg",
+					"id": 8,
+					"text": "Big Travellers"
+				},
+				"third": {
+					"link": ".facebook_-1915001537.jpg",
+					"id": 9,
+					"text": "Sand & Beaches"
+				}
+			},
+			"rightLinks": {
+				"first": {
+					"link": "2014-12-19 11.31.46.jpg",
+					"id": 10,
+					"text": "Montenegro Beauty" 
+				},
+				"second": {
+					"link": "2014-12-19 11.32.06.jpg",
+					"id": 11,
+					"text": "World Sensation"
+				},
+				"third": {
+					"link": "2014-12-19 11.34.26.jpg",
+					"id": 12,
+					"text": "Hot offers"
+				}
+			}		
+		}	
+	}
+}
