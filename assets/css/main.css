@@ -116,14 +116,16 @@ html {
 body {
   height: 100%; }
 
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; }
+
 #background-picture {
   position: fixed;
   background: #ffffff url("../img/background1.jpg") no-repeat 0 0;
   background-size: cover;
   width: 100%;
-  min-width: 1260px;
   height: 100%;
-  min-height: 980px;
   margin: 0;
   animation-name: animatedBackground;
   animation-duration: 30s;
@@ -138,7 +140,8 @@ body {
   height: 100%;
   min-height: 980px;
   margin: 0;
-  padding: 3% 0; }
+  padding: 3% 0;
+  overflow: hidden; }
   #arch-wrapper .main-wrapper {
     position: relative;
     height: 100%;
@@ -241,6 +244,23 @@ body {
             background-color: #bc1111; }
       #arch-wrapper .main-wrapper .front-tab .tab-content .box {
         max-width: 18%; }
+      #arch-wrapper .main-wrapper .front-tab .tab-content .bot-pane .bottom-link .link-content {
+        text-align: center;
+        overflow: hidden; }
+        #arch-wrapper .main-wrapper .front-tab .tab-content .bot-pane .bottom-link .link-content .link-text {
+          display: inline-block;
+          font-weight: bold;
+          font-style: italic;
+          font-size: 1.1em;
+          letter-spacing: -0.1em;
+          width: 100%;
+          line-height: 1em;
+          -ms-transform: rotate(-10deg);
+          -webkit-transform: rotate(-10deg);
+          transform: rotate(-10deg);
+          position: relative;
+          bottom: -10px;
+          color: white; }
       #arch-wrapper .main-wrapper .front-tab .tab-footer {
         position: relative;
         margin: 0;
@@ -286,7 +306,7 @@ body {
         width: 100%; }
       #arch-wrapper .main-wrapper .back-tab .tab-navigation {
         width: 100%;
-        min-height: 46px;
+        height: 46px;
         background-color: #bc1111;
         position: absolute; }
         #arch-wrapper .main-wrapper .back-tab .tab-navigation:hover {
@@ -306,9 +326,13 @@ body {
           -ms-transform: scale(0.5, 0.5);
           -webkit-transform: scale(0.5, 0.5);
           transform: scale(0.5, 0.5); }
+        #arch-wrapper .main-wrapper .back-tab .tab-content .left-box .box-text, #arch-wrapper .main-wrapper .back-tab .tab-content .right-box .box-text {
+          font-size: 1em; }
         #arch-wrapper .main-wrapper .back-tab .tab-content > div {
           height: 100%; }
-      #arch-wrapper .main-wrapper .back-tab .bottom-link {
+        #arch-wrapper .main-wrapper .back-tab .tab-content .box-pane {
+          display: inline-block; }
+      #arch-wrapper .main-wrapper .back-tab .bottom-link, #arch-wrapper .main-wrapper .back-tab .tab-footer {
         display: none; }
     #arch-wrapper .main-wrapper .top-left-tab {
       top: 0;
@@ -319,7 +343,7 @@ body {
       animation-timing-function: ease-in-out; }
       #arch-wrapper .main-wrapper .top-left-tab .tab-content {
         bottom: 0;
-        padding-top: 50px; }
+        padding-top: 46px; }
     #arch-wrapper .main-wrapper .top-right-tab {
       top: 0;
       left: 60%;
@@ -329,7 +353,7 @@ body {
       animation-timing-function: ease-in-out; }
       #arch-wrapper .main-wrapper .top-right-tab .tab-content {
         bottom: 0;
-        padding-top: 50px; }
+        padding-top: 46px; }
     #arch-wrapper .main-wrapper .bot-right-tab {
       top: 60%;
       left: 60%;
@@ -341,7 +365,7 @@ body {
         bottom: 0; }
       #arch-wrapper .main-wrapper .bot-right-tab .tab-content {
         top: 0;
-        padding-bottom: 50px; }
+        padding-bottom: 46px; }
     #arch-wrapper .main-wrapper .bot-left-tab {
       top: 60%;
       left: 0;
@@ -353,7 +377,7 @@ body {
         bottom: 0; }
       #arch-wrapper .main-wrapper .bot-left-tab .tab-content {
         top: 0;
-        padding-bottom: 50px; }
+        padding-bottom: 46px; }
 
 /* style for content inside topic */
 .topic-container .tab-content {
@@ -479,5 +503,23 @@ body {
   .topic-container .tab-content .left-pane .box-content:hover, .topic-container .tab-content .right-pane .box-content:hover {
     cursor: pointer;
     cursor: hand; }
+
+/* style for various screen sizes */
+/* ----------- Non-Retina Screens ----------- */
+@media screen and (min-device-width: 1024px) and (max-device-width: 1279px) and (-webkit-min-device-pixel-ratio: 1) {
+  #arch-wrapper {
+    min-height: 600px; } }
+@media screen and (min-device-width: 1280px) and (max-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 1) {
+  #arch-wrapper {
+    min-height: 700px;
+    padding: 2% 0; }
+    #arch-wrapper .front-tab .topic-container .tab-navigation {
+      height: 20%; }
+    #arch-wrapper .front-tab .topic-container .tab-content {
+      height: 80%; } }
+@media screen and (min-device-width: 1601px) and (max-device-width: 1920px) and (-webkit-min-device-pixel-ratio: 1) {
+  #arch-wrapper {
+    min-height: 900px; } }
+/* ----------- Retina Screens ----------- */
 
 /*# sourceMappingURL=main.css.map */

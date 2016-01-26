@@ -1,8 +1,36 @@
 /* ----------- Non-Retina Screens ----------- */
 @media screen 
-  and (min-device-width: 1200px) 
+  and (min-device-width: 1024px) 
+  and (max-device-width: 1279px) 
+  and (-webkit-min-device-pixel-ratio: 1) {
+
+  #arch-wrapper {
+    min-height: 600px;
+  } 
+}
+
+@media screen 
+  and (min-device-width: 1280px) 
   and (max-device-width: 1600px) 
-  and (-webkit-min-device-pixel-ratio: 1) { 
+  and (-webkit-min-device-pixel-ratio: 1) {
+
+  #arch-wrapper {
+    min-height: 700px;
+    padding:    2% 0;
+
+    .front-tab {
+
+      .topic-container {
+
+        .tab-navigation {
+          height: 20%;
+        }
+        .tab-content {
+          height: 80%;
+        }
+      }
+    }
+  } 
 }
 
 @media screen 

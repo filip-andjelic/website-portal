@@ -172,6 +172,32 @@ body {
 				.box {
 					max-width: 18%;
 				}
+				.bot-pane {
+
+					.bottom-link {
+
+						.link-content {
+							text-align: center;
+							overflow: hidden;
+
+							.link-text {
+								display: inline-block;
+								font-weight: bold;
+						    font-style: italic;
+						    font-size: 1.1em;
+						    letter-spacing: -0.1em;
+						    width: 100%;
+						    line-height: 1em;
+						    -ms-transform: rotate(-10deg); 
+					    	-webkit-transform: rotate(-10deg); 
+					      transform: rotate(-10deg);
+					      position: relative;
+					      bottom: -10px;
+					      color: white;
+							}
+						}
+					}
+				}
 			}
 			.tab-footer {
 				position: relative;
@@ -228,7 +254,7 @@ body {
 			}
 			.tab-navigation {
 				width: 100%;
-				min-height: 46px; 
+				height: 46px; 
 				background-color: $contentColor;
 				position: absolute;
 				&:hover {
@@ -253,14 +279,22 @@ body {
 					-ms-transform: scale(0.5,0.5); 
 		    	-webkit-transform: scale(0.5,0.5); 
 		      transform: scale(0.5,0.5);
-
 		    }
+		    .left-box, .right-box {
 
+		    	.box-text {
+			    	font-size: 1em;
+			    }
+		    }
 				&>div {
 					height: 100%;
 				}
+				.box-pane {
+					display: inline-block;
+				}
+
 			}
-			.bottom-link {
+			.bottom-link, .tab-footer {
 				display: none;
 			}
 		}
@@ -273,7 +307,7 @@ body {
 			animation-timing-function: ease-in-out;
 			.tab-content {
 				bottom: 0;
-				padding-top: 50px;
+				padding-top: 46px;
 			}
 		}
 		.top-right-tab {
@@ -283,9 +317,10 @@ body {
 			animation-duration: 6s;
 			animation-iteration-count: infinite;
 			animation-timing-function: ease-in-out;
+
 			.tab-content {
 				bottom: 0;
-				padding-top: 50px;
+				padding-top: 46px;
 			}
 		}
 		.bot-right-tab {
@@ -301,7 +336,7 @@ body {
 			}
 			.tab-content {
 				top: 0;
-				padding-bottom: 50px;
+				padding-bottom: 46px;
 			}
 		}
 		.bot-left-tab {
@@ -317,7 +352,7 @@ body {
 			}
 			.tab-content {
 				top: 0;
-				padding-bottom: 50px;
+				padding-bottom: 46px;
 			}
 		}
 	}

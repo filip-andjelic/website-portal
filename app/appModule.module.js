@@ -133,7 +133,7 @@ angular.module( "appModule" )
 			}
 		];
 	});
-	$scope.goToList = [
+	/*$scope.goToList = [
 		{	
 			link:  $scope.page === 1 ? 0 : 1,
 			title: $scope.page === 1 ? 'Home' : 'Downtown'
@@ -147,7 +147,7 @@ angular.module( "appModule" )
 			link:  $scope.page === 4 ? 0 : 4,
 			title: $scope.page === 4 ? 'Home' : 'Hit The Road'
 		}
-	];
+	];*/
 	// triggers when top navigation link is clicked
 	$scope.clickLink = function(event, link) {
 		var homePage = $('#home');
@@ -224,11 +224,12 @@ angular.module( "appModule" )
   	scope: {
   		link: '@'
   	},
-  	template: '<div class="bottom-link"><div class="link-content" ng-style="{\'background-image\': \'url(/website-development/assets/img/\'+url+\')\'}"></div></div>',
+  	template: '<div class="bottom-link"><div class="link-content" ng-style="{\'background-image\': \'url(/website-development/assets/img/\'+url+\')\'}"><span class="link-text">{{text}}</span></div></div>',
   	link: function( scope, element, attrs ) {
 
   		scope.link = scope.$eval(attrs.link);
   		scope.url  = scope.link.link;
+  		scope.text = scope.link.text;
   		//console.log(scope.$parent.topic);
   		//console.log(scope.url);
   		/* loading dinymical data
