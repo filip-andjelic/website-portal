@@ -4,17 +4,21 @@ html {
 body {
 	height: 	100%;
 }
+::-webkit-scrollbar {
+  width: 0px;  
+  background: transparent; 
+}
 #background-picture {
-	position: fixed;
-	background: 			#ffffff url('../img/background1.jpg') no-repeat 0 0;
-	background-size:  cover;
-	width: 					  100%;
-	min-width: 				1260px;
-	height: 					100%;
-	min-height: 			980px;
-	margin: 					0;
-	animation-name: animatedBackground;
-	animation-duration: 30s;
+	position: 							   fixed;
+	background: 							 #ffffff url('../img/background1.jpg') no-repeat 0 0;
+	background-size:  				 cover;
+	width: 					  				 100%;
+	//min-width: 							 1260px;
+	height: 									 100%;
+	//min-height: 						 980px;
+	margin: 									 0;
+	animation-name: 					 animatedBackground;
+	animation-duration: 			 30s;
 	animation-iteration-count: infinite;
 	animation-timing-function: linear;
 }
@@ -27,6 +31,7 @@ body {
 	min-height: 			980px;
 	margin: 					0;
 	padding: 					3% 0;
+	overflow: 				hidden;
 
 	.main-wrapper {
 		position:  			relative;
@@ -35,13 +40,13 @@ body {
 
 		.front-tab {
 			position:     absolute;
-			top:          10%;
-			left:         10%;
-			width:        80%;
-			height:       80%;
+			top:          		10%;
+			left:         		10%;
+			width:        		80%;
+			height:           80%;
 			background-color: $contentBackground;
-			opacity:      0.9;
-			z-index:      10;
+			opacity:     			0.9;
+			z-index:     		  10;
 			
 			.topic-container {
 				height: 		100%;
@@ -55,21 +60,21 @@ body {
 					position: relative;
 					
 					.top-nav {
-						width: 	100%;
-						height: 50%;
+						width: 			100%;
+						height: 	  50%;
 						box-sizing: border-box;
 
 						.nav {
-							height: 100%;
-							width: 	86%;
-							margin: auto;
+							height: 		 100%;
+							width: 			 86%;
+							margin: 		 auto;
 							padding-top: 15px;
 							
 							span {
-								height: 100%;
-								background-color: $contentColor;
-								padding: 10px 25px;
-								border-radius: 45% 45% 0 0;
+								height: 						 100%;
+								background-color: 	 $contentColor;
+								padding: 					   10px 25px;
+								border-radius: 			 45% 45% 0 0;
 								//-webkit-transform: translateX(-50%);
 								
 								&:hover {
