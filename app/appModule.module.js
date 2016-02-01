@@ -133,58 +133,36 @@ angular.module( "appModule" )
 			}
 		];
 	});
-	/*$scope.goToList = [
-		{	
-			link:  $scope.page === 1 ? 0 : 1,
-			title: $scope.page === 1 ? 'Home' : 'Downtown'
-		},{	
-			link:  $scope.page === 2 ? 0 : 2,
-			title: $scope.page === 2 ? 'Home' : 'Art & Culture'
-		},{	
-			link:  $scope.page === 3 ? 0 : 3,
-			title: $scope.page === 3 ? 'Home' : 'People'
-		},{	
-			link:  $scope.page === 4 ? 0 : 4,
-			title: $scope.page === 4 ? 'Home' : 'Hit The Road'
-		}
-	];*/
 	// triggers when top navigation link is clicked
 	$scope.clickLink = function(event, link) {
 		var homePage = $('#home');
-  	homePage.removeClass();
-  	var prevTab = $(event.currentTarget).closest('.topic-container').parent();
-  	prevTab.addClass('prev-tab');
-  	$('#arch-wrapper').scope().page = link;
-  	switch(link) {
-  		case 1:
-  			homePage.addClass('back-tab top-left-tab');
-  			break;
-  		case 2:
-  			//homePage.removeClass();
-  			homePage.addClass('back-tab top-right-tab');
-  			break;
-  		case 3:
-  			//homePage.removeClass();
-  			homePage.addClass('back-tab bot-right-tab');
-  			break;
-  		case 4:
-  			//homePage.removeClass();
-  			homePage.addClass('back-tab bot-left-tab');
-  			break;			
-  	}
+	  	homePage.removeClass();
+	  	var prevTab = $(event.currentTarget).closest('.topic-container').parent();
+	  	prevTab.addClass('prev-tab');
+	  	$('#arch-wrapper').scope().page = link;
+	  	switch(link) {
+	  		case 1:
+	  			homePage.addClass('back-tab top-left-tab');
+	  			break;
+	  		case 2:
+	  			//homePage.removeClass();
+	  			homePage.addClass('back-tab top-right-tab');
+	  			break;
+	  		case 3:
+	  			//homePage.removeClass();
+	  			homePage.addClass('back-tab bot-right-tab');
+	  			break;
+	  		case 4:
+	  			//homePage.removeClass();
+	  			homePage.addClass('back-tab bot-left-tab');
+	  			break;			
+	  	}
 	};
 	// defines object for bottom content
 	$scope.botLinks 	= {};
 	$scope.leftLinks  = {};
 	$scope.rightLinks = {};
 	$scope.midLinks	  = {};
-	$scope.loadMidLinks = function () {
-		$scope.midLinks = {
-			link: 'Ponitac_GTO-wallpaper-10304245.jpg',
-			id: 13
-		};
-	};
-	$scope.loadMidLinks();
 	$scope.loadContentLinks = function () {
 		$http({
 			method: 'GET',
@@ -194,6 +172,8 @@ angular.module( "appModule" )
 		  $scope.botLinks 		= $scope.topicContent.botLinks;
 			$scope.leftLinks  	= $scope.topicContent.leftLinks;
 			$scope.rightLinks 	= $scope.topicContent.rightLinks;
+			$scope.midLinks     = $scope.topicContent.midLinks;
+			//console.log($scope.midLinks);
 		});
 	};
 	$scope.loadContentLinks();
@@ -224,7 +204,7 @@ angular.module( "appModule" )
   	scope: {
   		link: '@'
   	},
-  	template: '<div class="bottom-link"><div class="link-content" ng-style="{\'background-image\': \'url(/website-development/assets/img/\'+url+\')\'}"><span class="link-text">{{text}}</span></div></div>',
+  	template: '<div class="bottom-link"><div ng-click="showBox($event)" class="link-content" ng-style="{\'background-image\': \'url(/website-development/assets/img/\'+url+\')\'}"><span class="link-text">{{text}}</span></div></div>',
   	link: function( scope, element, attrs ) {
 
   		scope.link = scope.$eval(attrs.link);
@@ -232,14 +212,15 @@ angular.module( "appModule" )
   		scope.text = scope.link.text;
   		//console.log(scope.$parent.topic);
   		//console.log(scope.url);
-  		/* loading dinymical data
-  		$http({
-  			method: 'GET',
-  			url:    '/website-development/assets/img/'+scope.link
-  		}).then(function(response){
-  			scope.bottomContent = response;
-  		});
-			*/
+  		scope.showBox = function (event) {
+  			var thisBox 		 = $(event.currentTarget);
+  			var siblingBoxes = thisBox.closest('.link-wrapper').find('.link-content');
+  			// remove clicked style from other boxes
+  			siblingBoxes.removeClass('clicked');
+  			// style this box as clicked
+  			thisBox.addClass('clicked');
+  			console.log($(event.currentTarget).scope());
+  		};
   	}
   }		
 });
@@ -303,10 +284,17 @@ angular.module( "appModule" )
   	scope: {
   		link: '@'
   	},
-  	template: '<div class="mid-box"><div class="box-content" ng-style="{\'background-image\': \'url(/website-development/assets/img/\'+url+\')\'}"><div class="content-header"><span class="header">{{text}}</span></div></div></div>',
+  	template: '<div class="mid-box"><div ng-repeat="page in box" ng-class="{\'box-content\': true, \'hidden\': $index !== 0 ? true : false}" ng-style="{\'background-image\': \'url(/website-development/assets/img/\'+page.link+\')\'}"><div class="content-header"><span class="header">{{page.text}}</span></div><div ng-click="switchPage($index, $event)" class="forward"><span class="glyphicon glyphicon-triangle-right"></span></div></div></div>',
   	link: function ( scope, element, attrs) {
-  		scope.box = scope.$eval(attrs.box);
-  		scope.url  = scope.box.link;
+  		scope.box  				= scope.$eval(attrs.box);
+  		scope.switchPage  = function(index, event){
+  			var indexForLoading = index + 1;
+  			var allPagesInTopic = $(event.currentTarget).closest('.mid-box').find('.box-content'); 
+  			var pageForLoading  = $(allPagesInTopic[indexForLoading]);
+  			$(allPagesInTopic[index]).addClass('hidden');
+  			pageForLoading.removeClass('hidden');
+  			//console.log(pageForLoading[indexForLoading]);
+  		};
   	}
   } 
 });
