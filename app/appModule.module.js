@@ -179,22 +179,55 @@ angular.module( "appModule" )
 	$scope.loadContentLinks();
 
 	$scope.switchBoxes = function (event) {
-		var pickedBox 		 = $(event.currentTarget);
-		var thisPage	  	 = pickedBox.scope().content.page;
-		var currentPage    = pickedBox.scope().page;
-		var currentMidLink = pickedBox.closest('.tab-content').find('.mid-box').scope();
+		var pickedBox 		  = $(event.currentTarget);
+		var thisPage	  	  = pickedBox.scope().content.page;
+		var currentPage     = pickedBox.scope().page;
+		var botPaneWrapper  = pickedBox.closest('.tab-content').find('.bot-pane');
+		var currentMidLink  = pickedBox.closest('.tab-content').find('.mid-box').scope();
+		// switch only boxes in same topic
 		if ( thisPage === currentPage ) {
-			var pickedLink 		 = pickedBox.find('div').scope();
-			var midContent 		 = {
-				url: currentMidLink.url,
-				text: currentMidLink.text
-			};
-			currentMidLink.url  = pickedLink.url;
-			currentMidLink.text = pickedLink.text;
-			pickedLink.url 		  = midContent.url;
-			pickedLink.text 		= midContent.text;
+			var pickedLink = pickedBox.find('div').scope();
+			// transform this box object into array of objects
+			if (angular.isArray(pickedLink.box) === false ){
+				pickedLink.box = [pickedLink.box];
+			}
+			// if main content is hidden behind bot links content
+			if ( botPaneWrapper.scope().previousContent !== undefined ) {
+				var existingContent = botPaneWrapper.scope().previousContent;
+				// put mid content aside, in place of clicked box
+				var midContent = {
+					url: existingContent.box[0].url,
+					text: existingContent.box[0].text,
+					box: existingContent.box,
+					index: existingContent.index
+				};
+				// empty previous content object
+				botPaneWrapper.scope().previousContent = undefined;
+				botPaneWrapper.find('.clicked').removeClass('clicked');
+			}
+			else {
+				var midContent = {
+					url: currentMidLink.box[0].url,
+					text: currentMidLink.box[0].text,
+					box: currentMidLink.box,
+					index: currentMidLink.index
+				};
+			}
+			currentMidLink.box   = pickedLink.box;
+			currentMidLink.link  = pickedLink.url;
+			currentMidLink.text  = pickedLink.text;
+			currentMidLink.index = pickedLink.index ? pickedLink.index : 0;
+			pickedLink.url  	   = midContent.box[0].link;
+			pickedLink.text 	   = midContent.box[0].text;
+			pickedLink.box  	   = midContent.box;
+			pickedLink.index  	 = midContent.index;
 		}
 	};
+}]);
+angular.module( "appModule" )
+.controller( 'bottomController', ['$scope', function( $scope ) {
+	// object that hold content when bot links are opened
+	$scope.previousContent = undefined;
 }]);
 // directive for link holder in bottom content panel 
 angular.module( "appModule" )
@@ -204,7 +237,7 @@ angular.module( "appModule" )
   	scope: {
   		link: '@'
   	},
-  	template: '<div class="bottom-link"><div ng-click="showBox($event)" class="link-content" ng-style="{\'background-image\': \'url(/website-development/assets/img/\'+url+\')\'}"><span class="link-text">{{text}}</span></div></div>',
+  	template: '<div class="bottom-link"><div ng-click="showBox($event, link)" class="link-content" ng-style="{\'background-image\': \'url(/website-development/assets/img/\'+url+\')\'}"><span class="link-text">{{text}}</span></div></div>',
   	link: function( scope, element, attrs ) {
 
   		scope.link = scope.$eval(attrs.link);
@@ -213,13 +246,32 @@ angular.module( "appModule" )
   		//console.log(scope.$parent.topic);
   		//console.log(scope.url);
   		scope.showBox = function (event) {
-  			var thisBox 		 = $(event.currentTarget);
-  			var siblingBoxes = thisBox.closest('.link-wrapper').find('.link-content');
-  			// remove clicked style from other boxes
-  			siblingBoxes.removeClass('clicked');
-  			// style this box as clicked
-  			thisBox.addClass('clicked');
-  			console.log($(event.currentTarget).scope());
+  			var thisBox 		   = $(event.currentTarget);
+  			var currentMidLink = thisBox.closest('.tab-content').find('.mid-box').scope();
+  			var containerScope = thisBox.closest('.bot-pane').scope();
+  			// when clicked link is clicked again
+  			if ( thisBox.hasClass('clicked') ) {
+  				thisBox.removeClass('clicked');
+  				currentMidLink.box   = containerScope.previousContent.box;
+  				currentMidLink.index = containerScope.previousContent.index;
+  				containerScope.previousContent = undefined;
+  			}
+  			else {
+  				var siblingBoxes = thisBox.closest('.link-wrapper').find('.link-content');
+	  			// remove clicked style from other boxes
+	  			siblingBoxes.removeClass('clicked');
+	  			// style this box as clicked
+	  			thisBox.addClass('clicked');
+	  			if ( containerScope.previousContent === undefined ) {
+	  				containerScope.previousContent = {
+							box: currentMidLink.box,
+							index: currentMidLink.index
+						};	
+	  			}
+					// put chosen content in mid box
+					currentMidLink.box   = [ scope.$eval(scope.link) ];
+					currentMidLink.index = 0;
+  			}
   		};
   	}
   }		
@@ -238,15 +290,6 @@ angular.module( "appModule" )
   		scope.box  = scope.$eval(attrs.box);
   		scope.url  = scope.box.link;
   		scope.text = scope.box.text;
-  		//console.log(scope.text);
-  		/* loading dinymical data
-  		$http({
-  			method: 'GET',
-  			url:    '/website-development/assets/img/'+scope.link
-  		}).then(function(response){
-  			scope.bottomContent = response;
-  		});
-			*/
   	}
   }		
 });
@@ -264,37 +307,42 @@ angular.module( "appModule" )
   		scope.box  = scope.$eval(attrs.box);
   		scope.url  = scope.box.link;
   		scope.text = scope.box.text;
-  		//console.log(scope.url);
-  		/* loading dinymical data
-  		$http({
-  			method: 'GET',
-  			url:    '/website-development/assets/img/'+scope.link
-  		}).then(function(response){
-  			scope.bottomContent = response;
-  		});
-			*/
   	}
   }		
 });
 // directive for content holder in mid panel
 angular.module( "appModule" )
-.directive( 'midBox', function( $http, $timeout ) {
+.directive( 'midBox', function( $templateRequest, $compile ) {
   return {
   	restrict: 'A',
   	scope: {
   		link: '@'
   	},
-  	template: '<div class="mid-box"><div ng-repeat="page in box" ng-class="{\'box-content\': true, \'hidden\': $index !== 0 ? true : false}" ng-style="{\'background-image\': \'url(/website-development/assets/img/\'+page.link+\')\'}"><div class="content-header"><span class="header">{{page.text}}</span></div><div ng-click="switchPage($index, $event)" class="forward"><span class="glyphicon glyphicon-triangle-right"></span></div></div></div>',
   	link: function ( scope, element, attrs) {
   		scope.box  				= scope.$eval(attrs.box);
-  		scope.switchPage  = function(index, event){
-  			var indexForLoading = index + 1;
-  			var allPagesInTopic = $(event.currentTarget).closest('.mid-box').find('.box-content'); 
-  			var pageForLoading  = $(allPagesInTopic[indexForLoading]);
-  			$(allPagesInTopic[index]).addClass('hidden');
-  			pageForLoading.removeClass('hidden');
-  			//console.log(pageForLoading[indexForLoading]);
+  		scope.index       = 0;
+  		// triggers when arrow pager is clciked
+  		scope.switchPage  = function(event, operand){
+  			scope.index = operand === 'plus' ? scope.index + 1 : scope.index - 1;
   		};
+  		scope.contentUrl = '/website-development/views/'+attrs.view+'.html';
+  		// load dynamic template based on topic
+  		$templateRequest(scope.contentUrl).then(function(html){
+          var template = angular.element(html);
+          element.append(template);
+          $compile(template)(scope);
+      });
   	}
   } 
+});
+// directive for content holder in mid panel
+angular.module( "appModule" )
+.directive( 'pagerArrows', function() {
+  return {
+  	restrict: 'A',
+  	templateUrl: '/website-development/views/pager-arrows.html',
+  	link: function( scope, element, attrs ) {
+  		//console.log(scope);
+  	}
+  }
 });
