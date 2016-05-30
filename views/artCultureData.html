@@ -1,0 +1,8 @@
+<div class="mid-box">
+	<div ng-repeat="page in box" ng-class="{'box-content': true, 'hidden': index !== $index ? true : false}" ng-style="{'background-image': 'url(/website-development/assets/img/'+page.link+')'}">
+		<div class="content-header">
+			<span class="header">{{page.text}}</span>
+		</div>
+	</div>
+	<div pager-arrows></div>
+</div>

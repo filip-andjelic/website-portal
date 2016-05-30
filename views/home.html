@@ -35,14 +35,14 @@
 			<span left-box data-box="{{leftLinks.third}}" ng-click="switchBoxes($event)"></span>
 		</div>
 		<div ng-if="content.json.midPane" class="mid-pane">
-			<span mid-box data-box="{{midLinks}}"></span>
+			<span mid-box data-box="{{midLinks}}" data-view="{{topic}}"></span>
 		</div>
 		<div ng-if="content.json.rightPane" class="right-pane">
 			<span right-box data-box="{{rightLinks.first}}" ng-click="switchBoxes($event)"></span>
 			<span right-box data-box="{{rightLinks.second}}" ng-click="switchBoxes($event)"></span>
 			<span right-box data-box="{{rightLinks.third}}" ng-click="switchBoxes($event)"></span>
 		</div>
-		<div ng-if="content.json.botPane" class="bot-pane">
+		<div ng-if="content.json.botPane" class="bot-pane" ng-controller="bottomController">
 			<div class="link-wrapper">
 			<span bottom-link data-link="{{botLinks.first}}"></span>
 			<span bottom-link data-link="{{botLinks.second}}"></span>

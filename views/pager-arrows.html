@@ -1,0 +1,8 @@
+<div class="arrowsContainer">
+	<div ng-click="switchPage($event, 'minus')" ng-if="index > 0" class="backward">
+		<span class="glyphicon glyphicon-triangle-left"></span>
+	</div>
+	<div ng-click="switchPage($event, 'plus')" ng-if="index < box.length - 1" class="forward">
+		<span class="glyphicon glyphicon-triangle-right"></span>
+	</div>
+</div>
